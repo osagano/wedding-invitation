@@ -4,7 +4,16 @@
       "Bash(npm --version)",
       "Bash(vercel *)",
       "Bash(git *)",
-      "Bash(gh *)"
+      "Bash(gh *)",
+      "Bash(winget install *)",
+      "Bash(export PATH=\"$PATH:/c/Program Files/GitHub CLI\")",
+      "Read(//c/Program Files/GitHub CLI/**)",
+      "Read(//c/Users/**)",
+      "Bash(/c/Program Files/GitHub CLI/gh.exe auth *)",
+      "PowerShell(& \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" auth status 2>&1)",
+      "PowerShell(Test-Path *)",
+      "PowerShell(& \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" repo create wedding-invitation --public --description \"K & S Wedding Invitation Website\" --source \"C:\\\\Wed\" --remote origin --push 2>&1)",
+      "PowerShell(vercel deploy *)"
     ]
   }
 }

@@ -721,32 +721,45 @@
   /* ── RSVP SUBMIT ── */
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzI1g7pXUAhgY6MEBtSo-CeHtBfPpj082RdkTHJgxzIDcTpoTNXYEG8OQVssV3lVc4pRA/exec';
 
-  document.getElementById('rsvpForm').addEventListener('submit', async function(e) {
+  document.getElementById('rsvpForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    const btn = document.getElementById('rsvpBtn');
+    const btn   = document.getElementById('rsvpBtn');
     const toast = document.getElementById('toast');
-
-    const data = new FormData(this);
-    const payload = new URLSearchParams(data);
+    const formData = new FormData(this);
 
     btn.textContent = 'Sending…';
     btn.disabled = true;
 
-    try {
-      await fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: payload,
-      });
-      toast.textContent = 'Thank you! We can\'t wait to see you 🌸';
-      toast.style.background = 'var(--brown)';
-    } catch {
-      toast.textContent = 'Oops — please try again or contact us directly.';
-      toast.style.background = '#c0665a';
+    /* Submit via hidden iframe — bypasses CORS/redirect issues entirely */
+    const iframe = document.createElement('iframe');
+    iframe.name = 'rsvp-frame';
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+
+    const proxy = document.createElement('form');
+    proxy.method = 'POST';
+    proxy.action = SCRIPT_URL;
+    proxy.target = 'rsvp-frame';
+    proxy.style.display = 'none';
+
+    for (const [key, val] of formData.entries()) {
+      const inp = document.createElement('input');
+      inp.type = 'hidden';
+      inp.name = key;
+      inp.value = val;
+      proxy.appendChild(inp);
     }
 
+    document.body.appendChild(proxy);
+    proxy.submit();
+
+    setTimeout(() => { iframe.remove(); proxy.remove(); }, 5000);
+
+    toast.textContent = 'Thank you! We can\'t wait to see you 🌸';
+    toast.style.background = 'var(--brown)';
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 4000);
+
     this.reset();
     btn.textContent = 'Send My RSVP ✉';
     btn.disabled = false;

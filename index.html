@@ -719,12 +719,44 @@
   });
 
   /* ── RSVP SUBMIT ── */
-  document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwj3EfiSzyByPabegU5ZVvqLxgXaBcRB_FCw-KMHhtNlapD1J8DPNVcF6pfkZJEox2_/exec';
+
+  document.getElementById('rsvpForm').addEventListener('submit', async function(e) {
     e.preventDefault();
+    const btn = document.getElementById('rsvpBtn');
     const toast = document.getElementById('toast');
+
+    const fields = this.elements;
+    const payload = {
+      name:     fields[0].value,
+      guests:   fields[1].value,
+      attending:fields[2].value,
+      dietary:  fields[3].value,
+      message:  fields[4].value,
+    };
+
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      toast.textContent = 'Thank you! We can\'t wait to see you 🌸';
+      toast.style.background = 'var(--brown)';
+    } catch {
+      toast.textContent = 'Oops — please try again or contact us directly.';
+      toast.style.background = '#c0665a';
+    }
+
     toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 3500);
+    setTimeout(() => toast.classList.remove('show'), 4000);
     this.reset();
+    btn.textContent = 'Send My RSVP ✉';
+    btn.disabled = false;
   });
 </script>
 </body>

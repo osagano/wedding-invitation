@@ -282,6 +282,31 @@
     .map-btn:active { transform: scale(.97); }
     .details-cta { text-align: center; }
 
+    /* ── GALLERY ── */
+    .gallery-wrap { background: linear-gradient(135deg, #fbe8d8 0%, #e8f2f0 100%); position: relative; overflow: hidden; }
+    .gallery-blob-l { position: absolute; width: 340px; height: 340px; border-radius: 50%; filter: blur(80px); background: radial-gradient(circle, rgba(240,200,168,.32), transparent); top: -60px; left: -70px; animation: blob-drift 19s ease-in-out infinite; pointer-events: none; }
+    .gallery-blob-r { position: absolute; width: 320px; height: 320px; border-radius: 50%; filter: blur(80px); background: radial-gradient(circle, rgba(191,208,187,.3), transparent); bottom: -70px; right: -60px; animation: blob-drift-r 21s ease-in-out infinite; pointer-events: none; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px 18px; margin-top: 12px; position: relative; z-index: 1; }
+    .gallery-item {
+      position: relative; background: #fffdfa; padding: 10px 10px 30px; border-radius: 6px;
+      box-shadow: 0 10px 26px rgba(90,58,42,.18), 0 0 0 1px rgba(200,168,120,.15);
+      opacity: 0; transform: translateY(30px) rotate(var(--r, 0deg));
+      transition: opacity .7s ease, transform .7s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+    }
+    .gallery-item::before {
+      content: ''; position: absolute; top: -10px; left: 50%; transform: translateX(-50%) rotate(-4deg);
+      width: 52px; height: 16px; background: rgba(200,168,120,.45); box-shadow: 0 2px 6px rgba(90,58,42,.15);
+    }
+    .gallery-item.visible { opacity: 1; transform: translateY(0) rotate(var(--r, 0deg)); }
+    .gallery-item:hover { transform: translateY(-8px) scale(1.045) rotate(0deg); box-shadow: 0 18px 40px rgba(90,58,42,.26); z-index: 2; }
+    .gallery-item img { display: block; width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 3px; }
+    .gallery-item:nth-child(1) { --r: -3deg; }
+    .gallery-item:nth-child(2) { --r: 2.5deg; }
+    .gallery-item:nth-child(3) { --r: -2deg; }
+    .gallery-item:nth-child(4) { --r: 3deg; }
+    .gallery-item:nth-child(5) { --r: -1.5deg; grid-column: 1 / -1; max-width: 260px; margin: 0 auto; }
+    .gallery-caption { text-align: center; font-family: 'Cormorant Garamond', 'Itim', serif; font-style: italic; font-size: 14px; color: var(--brown); opacity: .6; margin-top: 32px; position: relative; z-index: 1; }
+
     /* ── QUOTE ── */
     .quote-wrap { background: linear-gradient(135deg, #daeaf0 0%, #f0e4ec 100%); padding: 80px 0; text-align: center; overflow: hidden; position: relative; }
     .quote-blob-l { position: absolute; width: 350px; height: 350px; border-radius: 50%; filter: blur(80px); background: radial-gradient(circle, rgba(196,221,232,.35), transparent); top: -80px; left: -80px; animation: blob-drift 20s ease-in-out infinite; }
@@ -395,6 +420,8 @@
       .countdown-item { padding: 28px 10px; }
       .detail-cards { flex-direction: row; gap: 20px; }
       .detail-card { flex-direction: column; align-items: flex-start; flex: 1; gap: 14px; }
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 34px 26px; }
+      .gallery-item:nth-child(5) { grid-column: auto; max-width: none; margin: 0; }
       .quote-text { font-size: 26px; }
       .quote-mark { font-size: 110px; }
       .timeline { padding-left: 32px; }
@@ -510,6 +537,38 @@
       <a class="map-btn" href="https://maps.google.com/?q=Autuus+Studio+Chiang+Mai" target="_blank" rel="noopener">🗺 &nbsp; Get Directions</a>
     </div>
   </div>
+</div>
+
+<!-- wave -->
+<div class="wave-divider" aria-hidden="true">
+  <svg viewBox="0 0 960 48" preserveAspectRatio="none" fill="none">
+    <path d="M0,20 Q240,52 480,20 Q720,-12 960,20 L960,48 L0,48 Z" fill="rgba(251,232,216,.9)"/>
+  </svg>
+</div>
+
+<!-- ══ GALLERY ══ -->
+<div class="gallery-wrap section-wrap reveal">
+  <div class="gallery-blob-l"></div>
+  <div class="gallery-blob-r"></div>
+  <div class="container">
+    <p class="section-label">Our Story</p>
+    <p class="section-title" data-shimmer>Moments We Cherish</p>
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item"><img src="Pic/482248527_29716228657976301_6852797349281263435_n.jpg" alt="K & S among autumn maple leaves" loading="lazy" /></div>
+      <div class="gallery-item"><img src="Pic/486188100_29873197445612754_726198692899856081_n.jpg" alt="K & S sharing a smile by the cottage" loading="lazy" /></div>
+      <div class="gallery-item"><img src="Pic/482262306_29716246187974548_3129952641973134479_n.jpg" alt="K & S at a wooden cabin with a puppy" loading="lazy" /></div>
+      <div class="gallery-item"><img src="Pic/485892397_29873197405612758_3432536775307330262_n.jpg" alt="K & S on a picnic blanket by the brick cottage" loading="lazy" /></div>
+      <div class="gallery-item"><img src="Pic/482360697_29716228641309636_8744901188127926515_n.jpg" alt="K & S holding autumn leaves together" loading="lazy" /></div>
+    </div>
+    <p class="gallery-caption">✿ every season, together ✿</p>
+  </div>
+</div>
+
+<!-- wave -->
+<div class="wave-divider" aria-hidden="true" style="transform:rotate(180deg)">
+  <svg viewBox="0 0 960 48" preserveAspectRatio="none" fill="none">
+    <path d="M0,24 Q120,48 240,24 Q360,0 480,24 Q600,48 720,24 Q840,0 960,24 L960,48 L0,48 Z" fill="rgba(218,234,240,.9)"/>
+  </svg>
 </div>
 
 <!-- ══ QUOTE ══ -->
@@ -659,6 +718,19 @@
   }, { threshold: 0.15 });
   const dc = document.getElementById('detailCards');
   if (dc) cardObs.observe(dc);
+
+  /* ── GALLERY stagger ── */
+  const galleryObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.querySelectorAll('.gallery-item').forEach((item, i) => {
+        setTimeout(() => item.classList.add('visible'), i * 140);
+      });
+      galleryObs.unobserve(e.target);
+    });
+  }, { threshold: 0.1 });
+  const gg = document.getElementById('galleryGrid');
+  if (gg) galleryObs.observe(gg);
 
   /* ── QUOTE TEXT reveal ── */
   const quoteObs = new IntersectionObserver(entries => {

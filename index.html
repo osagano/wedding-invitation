@@ -127,13 +127,19 @@
     }
     .hero-bg {
       position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(160deg, #d6eaf4 0%, #e8f4d8 30%, #fbe8d8 60%, #f8dce4 100%);
+      background: url('flower-field-hero.png') center 38% / cover no-repeat;
+    }
+    .hero-bg::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(160deg, rgba(214,234,244,.55) 0%, rgba(232,244,216,.32) 30%, rgba(251,232,216,.4) 60%, rgba(248,220,228,.55) 100%);
       background-size: 300% 300%;
       animation: gradient-shift 14s ease infinite;
     }
     .hero-bg::after {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 50% 18%, rgba(255,255,255,.6) 0%, transparent 68%);
+      background:
+        radial-gradient(ellipse 62% 58% at 26% 42%, rgba(255,255,255,.68) 0%, transparent 72%),
+        radial-gradient(ellipse at 50% 18%, rgba(255,255,255,.55) 0%, transparent 68%);
     }
 
     /* Fairy lights bar */
@@ -362,7 +368,12 @@
     }
 
     /* ── FOOTER ── */
-    footer { background: linear-gradient(135deg, #d8e8d4 0%, #e4d8e8 100%); padding: 56px 28px 64px; text-align: center; position: relative; overflow: hidden; }
+    footer {
+      background:
+        linear-gradient(135deg, rgba(216,232,212,.9) 0%, rgba(228,216,232,.9) 100%),
+        url('flower-field-hero.png') center 65% / cover no-repeat;
+      padding: 56px 28px 64px; text-align: center; position: relative; overflow: hidden;
+    }
     .footer-blob { position: absolute; width: 500px; height: 500px; border-radius: 50%; filter: blur(100px); background: radial-gradient(circle, rgba(200,168,120,.18), transparent); top: 50%; left: 50%; transform: translate(-50%,-50%); animation: orb-pulse 10s ease-in-out infinite; pointer-events: none; }
     .footer-monogram { font-family: 'Great Vibes', cursive; font-size: 60px; color: var(--brown); margin-bottom: 12px; animation: float-scene 5s ease-in-out infinite; display: inline-block; position: relative; z-index: 1; }
     .footer-date { font-family: 'Cormorant Garamond', 'Itim', serif; font-size: 13px; letter-spacing: 3.5px; text-transform: uppercase; color: var(--brown); opacity: .7; margin-bottom: 24px; position: relative; z-index: 1; }

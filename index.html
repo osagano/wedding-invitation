@@ -273,6 +273,13 @@
     .detail-card:hover .detail-icon { transform: rotate(-8deg) scale(1.12); }
     .detail-text h3 { font-family: 'Cormorant Garamond', 'Itim', serif; font-size: 17px; font-weight: 600; color: var(--brown); margin-bottom: 5px; }
     .detail-text p { font-size: 13px; line-height: 1.75; color: var(--brown); opacity: .75; }
+    .dress-palette { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+    .swatch {
+      width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(90,58,42,.2), inset 0 0 0 1.5px rgba(255,255,255,.7);
+      transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s;
+    }
+    .swatch:hover { transform: scale(1.28) translateY(-2px); box-shadow: 0 6px 14px rgba(90,58,42,.28), inset 0 0 0 1.5px rgba(255,255,255,.8); }
     .map-btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       margin-top: 28px; padding: 14px 32px;
@@ -530,7 +537,15 @@
     <div class="detail-cards" id="detailCards">
       <div class="detail-card"><div class="detail-icon">🗓</div><div class="detail-text"><h3>Date</h3><p>Saturday, 28 November 2026<br/></p></div></div>
       <div class="detail-card"><div class="detail-icon">📍</div><div class="detail-text"><h3>Venue</h3><p>Autuus Studio<br/>Chiang Mai, Thailand</p></div></div>
-      <div class="detail-card"><div class="detail-icon">👗</div><div class="detail-text"><h3>Dress Code</h3><p>Soft pastels</p></div></div>
+      <div class="detail-card"><div class="detail-icon">👗</div><div class="detail-text"><h3>Dress Code</h3><p>Soft pastels</p><div class="dress-palette" aria-hidden="true">
+          <span class="swatch" style="background:#c4dde8"></span>
+          <span class="swatch" style="background:#bfd0bb"></span>
+          <span class="swatch" style="background:#f0c8a8"></span>
+          <span class="swatch" style="background:#f0d8dc"></span>
+          <span class="swatch" style="background:#e8c0c8"></span>
+          <span class="swatch" style="background:#d0c0e8"></span>
+          <span class="swatch" style="background:#fff5e0"></span>
+        </div></div></div>
     </div>
     <div class="details-cta">
       <a class="map-btn" href="https://maps.google.com/?q=Autuus+Studio+Chiang+Mai" target="_blank" rel="noopener">🗺 &nbsp; Get Directions</a>

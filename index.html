@@ -339,35 +339,6 @@
     .timeline-event { font-family: 'Cormorant Garamond', 'Itim', serif; font-size: 18px; font-weight: 600; color: var(--brown); margin-bottom: 3px; }
     .timeline-desc { font-size: 13px; color: var(--brown); opacity: .65; line-height: 1.65; }
 
-    /* ── RSVP ── */
-    .rsvp-wrap { background: linear-gradient(135deg, #f4ece4 0%, #e8f0e4 100%); position: relative; overflow: hidden; }
-    .rsvp-blob { position: absolute; width: 500px; height: 500px; border-radius: 50%; filter: blur(100px); background: radial-gradient(circle, rgba(191,208,187,.25), transparent); top: -100px; right: -100px; animation: blob-drift 22s ease-in-out infinite; pointer-events: none; }
-    .rsvp-wrap .section-label { font-family: 'Mitr', 'Itim', sans-serif; font-size: 16px; font-weight: 400; letter-spacing: .5px; text-transform: none; margin-bottom: 12px; }
-    .rsvp-form { display: flex; flex-direction: column; gap: 16px; max-width: 600px; margin: 0 auto; }
-    .form-group { display: flex; flex-direction: column; gap: 8px; }
-    .form-group label { font-family: 'Mitr', 'Itim', sans-serif; font-size: 15px; font-weight: 400; letter-spacing: .2px; line-height: 1.5; color: var(--gold); }
-    .form-group input, .form-group select, .form-group textarea {
-      background: rgba(255,255,255,.88); border: 1.5px solid rgba(200,168,120,.28);
-      border-radius: 14px; padding: 14px 18px; font-family: 'Mitr', 'Jost', 'Itim', sans-serif;
-      font-size: 16px; line-height: 1.6; color: var(--brown); outline: none; width: 100%;
-      transition: border-color .25s, box-shadow .25s, transform .25s; -webkit-appearance: none;
-    }
-    .form-group input::placeholder, .form-group textarea::placeholder { font-size: 15px; opacity: .55; }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      border-color: var(--gold); box-shadow: 0 0 0 4px rgba(200,168,120,.12); transform: scale(1.015);
-    }
-    .form-group textarea { resize: none; height: 90px; }
-    .form-row { display: grid; grid-template-columns: 1fr; gap: 16px; }
-    .rsvp-btn {
-      padding: 16px; background: linear-gradient(135deg, #8ba888, #a8c0a4);
-      border: none; border-radius: 50px; color: white; font-family: 'Jost', 'Itim', sans-serif;
-      font-size: 13px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
-      cursor: pointer; box-shadow: 0 6px 24px rgba(90,58,42,.16);
-      transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s, filter .25s;
-      max-width: 600px; margin: 0 auto; width: 100%; display: block; position: relative; overflow: hidden;
-    }
-    .rsvp-btn:hover  { transform: translateY(-4px) scale(1.02); filter: brightness(1.08); box-shadow: 0 14px 34px rgba(90,58,42,.22); }
-    .rsvp-btn:active { transform: scale(.97); }
     .btn-ripple {
       position: absolute; border-radius: 50%; background: rgba(255,255,255,.4);
       width: 10px; height: 10px; transform-origin: center; pointer-events: none;
@@ -386,18 +357,6 @@
     .footer-date { font-family: 'Cormorant Garamond', 'Itim', serif; font-size: 13px; letter-spacing: 3.5px; text-transform: uppercase; color: var(--brown); opacity: .7; margin-bottom: 24px; position: relative; z-index: 1; }
     .footer-line { width: 60px; height: 1px; background: var(--gold); margin: 0 auto 24px; opacity: .55; }
     .footer-love { font-family: 'Cormorant Garamond', 'Itim', serif; font-size: 14px; font-style: italic; color: var(--brown); opacity: .5; position: relative; z-index: 1; }
-
-    /* ── TOAST ── */
-    .toast {
-      position: fixed; bottom: 28px; left: 50%;
-      transform: translateX(-50%) translateY(90px);
-      background: var(--brown); color: white; padding: 14px 28px;
-      border-radius: 50px; font-family: 'Mitr', 'Itim', 'Jost', sans-serif;
-      font-size: 15px; line-height: 1.5; letter-spacing: .3px;
-      z-index: 9999; transition: transform .45s cubic-bezier(.34,1.56,.64,1);
-      max-width: min(92vw, 480px); text-align: center; box-shadow: 0 8px 28px rgba(0,0,0,.22);
-    }
-    .toast.show { transform: translateX(-50%) translateY(0); }
 
     /* ── CURSOR SPARKLE ── */
     .cspark {
@@ -432,7 +391,6 @@
       .quote-mark { font-size: 110px; }
       .timeline { padding-left: 32px; }
       .timeline-event { font-size: 20px; }
-      .form-row { grid-template-columns: 1fr 1fr; }
       .footer-monogram { font-size: 72px; }
     }
     @media (min-width: 1200px) {
@@ -600,33 +558,6 @@
   </div>
 </div>
 
-<!-- ══ RSVP ══ -->
-<div class="rsvp-wrap section-wrap reveal" id="rsvp">
-  <div class="rsvp-blob"></div>
-  <div class="container">
-    <p class="section-label">กรุณาตอบรับการเข้าร่วมงาน</p>
-    <p class="section-title" data-shimmer>RSVP</p>
-    <form class="rsvp-form" id="rsvpForm">
-      <div class="form-row">
-        <div class="form-group"><label>ชื่อ</label><input name="name" type="text" placeholder="ชื่อที่บ่าวสาวหรือญาติบ่าวสาวรู้จัก" required /></div>
-        <div class="form-group"><label>จำนวนผู้มาร่วมงาน</label><select name="guests"><option value="1">1 คน</option><option value="2">2 คน</option><option value="3">3 คน</option><option value="4">4 คน</option></select></div>
-      </div>
-      <div class="form-group">
-        <label>ท่านเป็นญาติหรือเพื่อนฝั่งเจ้าบ่าวหรือเจ้าสาว</label>
-        <select name="relation">
-          <option value="groom_relative">ญาติฝั่งเจ้าบ่าว</option>
-          <option value="bride_relative">ญาติฝั่งเจ้าสาว</option>
-          <option value="groom_friend">เพื่อนฝั่งเจ้าบ่าว</option>
-          <option value="bride_friend">เพื่อนฝั่งเจ้าสาว</option>
-        </select>
-      </div>
-      <div class="form-group"><label>การเข้าร่วมงาน</label><select name="attending"><option value="yes">สามารถมาร่วมงานได้ 🎉</option><option value="no">ไม่สามารถมาร่วมงานได้</option></select></div>
-      <div class="form-group"><label>ฝากข้อความถึง เจ้าบ่าว-เจ้าสาว</label><textarea name="message" placeholder=""></textarea></div>
-    </form>
-    <button type="submit" form="rsvpForm" class="rsvp-btn" id="rsvpBtn">Send My RSVP ✉</button>
-  </div>
-</div>
-
 <!-- ══ FOOTER ══ -->
 <footer>
   <div class="footer-blob"></div>
@@ -635,8 +566,6 @@
   <div class="footer-line"></div>
   <p class="footer-love">Made with love ✦ Autuus Studio, Chiang Mai</p>
 </footer>
-
-<div class="toast" id="toast">Thank you! We can't wait to see you 🌸</div>
 
 <script>
   /* ── PETALS ── */
@@ -776,7 +705,7 @@
   }, { passive: true });
 
   /* ── BUTTON RIPPLE ── */
-  document.querySelectorAll('.rsvp-btn, .map-btn').forEach(btn => {
+  document.querySelectorAll('.map-btn').forEach(btn => {
     btn.addEventListener('click', function(e) {
       const r = document.createElement('span');
       r.className = 'btn-ripple';
@@ -787,52 +716,6 @@
     });
   });
 
-  /* ── RSVP SUBMIT ── */
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzI1g7pXUAhgY6MEBtSo-CeHtBfPpj082RdkTHJgxzIDcTpoTNXYEG8OQVssV3lVc4pRA/exec';
-
-  document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const btn   = document.getElementById('rsvpBtn');
-    const toast = document.getElementById('toast');
-    const formData = new FormData(this);
-
-    btn.textContent = 'Sending…';
-    btn.disabled = true;
-
-    /* Submit via hidden iframe — bypasses CORS/redirect issues entirely */
-    const iframe = document.createElement('iframe');
-    iframe.name = 'rsvp-frame';
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-
-    const proxy = document.createElement('form');
-    proxy.method = 'POST';
-    proxy.action = SCRIPT_URL;
-    proxy.target = 'rsvp-frame';
-    proxy.style.display = 'none';
-
-    for (const [key, val] of formData.entries()) {
-      const inp = document.createElement('input');
-      inp.type = 'hidden';
-      inp.name = key;
-      inp.value = val;
-      proxy.appendChild(inp);
-    }
-
-    document.body.appendChild(proxy);
-    proxy.submit();
-
-    setTimeout(() => { iframe.remove(); proxy.remove(); }, 5000);
-
-    toast.textContent = '🌸 ขอบคุณค่ะ/ครับ แล้วพบกันในวันงานนะคะ/ครับ 🌸';
-    toast.style.background = 'var(--brown)';
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 4000);
-
-    this.reset();
-    btn.textContent = 'Send My RSVP ✉';
-    btn.disabled = false;
-  });
 </script>
 </body>
 </html>

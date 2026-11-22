@@ -273,6 +273,12 @@
     .detail-card:hover .detail-icon { transform: rotate(-8deg) scale(1.12); }
     .detail-text h3 { font-family: 'Cormorant Garamond', 'Itim', serif; font-size: 17px; font-weight: 600; color: var(--brown); margin-bottom: 5px; }
     .detail-text p { font-size: 13px; line-height: 1.75; color: var(--brown); opacity: .75; }
+    .venue-name { font-weight: 500; }
+    .venue-note {
+      margin-top: 10px; padding: 10px 12px; border-left: 3px solid var(--gold); border-radius: 8px;
+      background: rgba(240,216,220,.45); font-family: 'Mitr', 'Itim', sans-serif;
+      font-size: 12px !important; line-height: 1.7 !important; opacity: .9 !important;
+    }
     .dress-palette { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
     .swatch {
       width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
@@ -494,7 +500,7 @@
     <p class="section-title" data-shimmer>When &amp; Where</p>
     <div class="detail-cards" id="detailCards">
       <div class="detail-card"><div class="detail-icon">🗓</div><div class="detail-text"><h3>Date</h3><p>Saturday, 28 November 2026<br/></p></div></div>
-      <div class="detail-card"><div class="detail-icon">📍</div><div class="detail-text"><h3>Venue</h3><p>Autuus Studio<br/>Chiang Mai, Thailand</p></div></div>
+      <div class="detail-card"><div class="detail-icon">📍</div><div class="detail-text"><h3>Venue</h3><p><span class="venue-name">Autuus Studio — Front Hall</span><br/>Chiang Mai, Thailand</p><p class="venue-note">งานจัดภายในห้อง Hall อาคารด้านหน้า<br/>กรุณาเข้าสู่บริเวณจัดงานด้านหน้า ไม่ใช่โซนสวนด้านหลัง</p></div></div>
       <div class="detail-card"><div class="detail-icon">👗</div><div class="detail-text"><h3>Dress Code</h3><p>Soft pastels</p><div class="dress-palette" aria-hidden="true">
           <span class="swatch" style="background:#c4dde8"></span>
           <span class="swatch" style="background:#bfd0bb"></span>
